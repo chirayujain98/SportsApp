@@ -7,7 +7,9 @@ const getAllTours = async () => {
 }
 
 const getMatchesByTourName = async params => {
-    const statement = 'select * from matches left join tours on matches.tourId = tours.id where tours.name = ?';
+    //Left join could be a costly operation, the below query avoids join directly
+    // filter matches based on tourId. It can be efficient more if  toudId and name have indexes.
+    const statement = 'SELECT * FROM matches WHERE tourId = (SELECT id FROM tours WHERE name = ?)';
     const parameters = [ params.name ];
     return await mysql.query(statement, parameters);
 }
