@@ -8,7 +8,6 @@ const getAllSportsToursAndMatches = async () => {
     const parameters = [];
     return await mysql.query(statement, parameters);
 }
-
 module.exports = {
     getAllSportsToursAndMatches: getAllSportsToursAndMatches
 }
