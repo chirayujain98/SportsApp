@@ -35,6 +35,15 @@ create table if not exists mydb.matches
     foreign key (tourId) references tours(id)
 );
 
+CREATE TABLE IF NOT EXISTS mydb.news
+(
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    status BOOLEAN NOT NULL DEFAULT TRUE,
+    recUpdatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 -- seed data
 insert ignore into mydb.sports (id, name) values (1, 'Cricket');
 insert ignore into mydb.sports (id, name) values (2, 'Football');
@@ -55,3 +64,6 @@ insert ignore into mydb.matches (name, tourId, format, startTime, endTime) value
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('IND vs WI', 3, 'ODI', '2023-06-12 10:00:00', '2023-06-12 23:00:00');
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('IND vs WI', 3, 'ODI', '2023-06-14 10:00:00', '2023-06-14 23:00:00');
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('KER vs JFC', 4, 'soccer', '2022-04-09 18:00:00', '2022-04-09 23:00:00');
+
+insert into mydb.news (title, description) VALUES ('Breaking News: Chirayu Jain is all set to crack the online round');
+insert into mydb.news (title, description) VALUES ('Global Event: Top innovater is CJ.');
